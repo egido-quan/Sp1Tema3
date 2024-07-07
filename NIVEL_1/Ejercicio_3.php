@@ -8,18 +8,17 @@
 <bodY>
 <?php
 
-     $palabras = ["naranja", "lima", "sandía", "plátano", "mango"];
+     $palabras = ["naranja", "lima", "sandía", "arándano", "plátano", "mango"];
 
     function estaLaLetra(array $palabras, string $char): bool {
-        $resultado = true;
-        for ($i = 0; ($i < count($palabras) && $resultado == true); $i++) {
-            if (strpos($palabras[$i], $char) == false) {
-                $resultado = false;
-            }
-            //$resultado = strpos($palabras[$i], $char); ==> Otra opción en lugar del if.
+        for ($i = 0; ($i < count($palabras)); $i++) {
+            if (stripos($palabras[$i], $char) === false) { // pongo === para que compare valor y tipo, pues
+                return false;                              // con == cuando la posición es 0 lo interpreta como false
+            }                                              // He usado stripos para que ignore si son mayúsculas o minúsculas
         }        
-        return $resultado;
+        return true;
     }
+
     
 
     echo "Este es el array de palabras:<br>";
